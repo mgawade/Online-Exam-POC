@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  title = 'Online-Exam-POC';
+  title = 'MOB QA-TEST';
   constructor( private readonly router: Router) {}
   ngOnInit() {
   this.router.navigate(['login']);

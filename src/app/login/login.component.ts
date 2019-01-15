@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -7,10 +8,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-
-  clickMessage = '';
+  
   loginForm: FormGroup;
-  constructor(private readonly formBuilder: FormBuilder) { }
+  constructor(private readonly formBuilder: FormBuilder,
+              private readonly router: Router) { }
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
@@ -20,8 +21,7 @@ export class LoginComponent implements OnInit {
   }
   onLogin() {
     console.warn(this.loginForm.value);
-    this.clickMessage = 'Test Started Successfully';
-    this.loginForm.reset();
+    this.router.navigate(['publish-test']);
   }
 
 }
