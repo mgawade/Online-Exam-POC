@@ -2,14 +2,13 @@
   <div class="card-body">
     <form (ngSubmit)="onLogin()" [formGroup]="loginForm">
       <div class="form-group">
-        <label for="exampleInputEmail1">Email address</label>
+        <label for="exampleInputUsername">User Name</label>
         <input
-          type="email"
-          class="form-control"
-          id="exampleInputEmail1"
-          aria-describedby="emailHelp"
-          placeholder="Enter email"
-          formControlName="email"
+          type="text"
+          class="form-control
+          id="exampleInputUsername"
+          placeholder="Enter Username"
+          formControlName="username"
         />
         <small id="emailHelp" class="form-text text-muted"
           >We'll never share your email with anyone else.</small
