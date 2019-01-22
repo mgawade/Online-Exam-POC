@@ -8,14 +8,14 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  
+
   loginForm: FormGroup;
   constructor(private readonly formBuilder: FormBuilder,
               private readonly router: Router) { }
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.email]],
+      username: ['', [Validators.required]],
       password: ['', Validators.required],
     });
   }
