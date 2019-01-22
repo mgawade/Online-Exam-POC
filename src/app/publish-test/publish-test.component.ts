@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-publish-test',
@@ -10,7 +11,8 @@ export class PublishTestComponent implements OnInit {
 
   clickMessage = '';
   publishForm: FormGroup;
-  constructor(private readonly formBuilder: FormBuilder) { }
+  constructor(private readonly formBuilder: FormBuilder,
+              private readonly router: Router) { }
 
   ngOnInit() {
     this.publishForm = this.formBuilder.group({
@@ -23,6 +25,7 @@ export class PublishTestComponent implements OnInit {
     console.warn(this.publishForm.value);
     this.clickMessage = 'Test Started Successfully';
     this.publishForm.reset();
+    this.router.navigate(['instruction-page']);
   }
 
 }
