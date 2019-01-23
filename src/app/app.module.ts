@@ -8,12 +8,13 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { PublishTestComponent } from './publish-test/publish-test.component';
 import { MysqlService } from './services/mysql.service';
 import { HttpModule } from '@angular/http';
-
+import { InstructionPageComponent } from './instruction-page/instruction-page.component';
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    PublishTestComponent
+    PublishTestComponent,
+    InstructionPageComponent
   ],
   imports: [
     BrowserModule,
