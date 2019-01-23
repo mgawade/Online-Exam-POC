@@ -2,12 +2,12 @@
   <div class="card-body">
     <form (ngSubmit)="onLogin()" [formGroup]="loginForm">
       <div class="form-group">
-        <label for="exampleInputUsername">Admin Name</label>
+        <label for="exampleInputUserName">Username</label>
         <input
           type="username"
           class="form-control"
-          id="exampleInputUsername"
-          placeholder="Admin name"
+          id="exampleInputUserName"
+          placeholder="Enter UserName"
           formControlName="username"
         />
         <small id="emailHelp" class="form-text text-muted"
