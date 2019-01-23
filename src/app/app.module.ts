@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PublishTestComponent } from './publish-test/publish-test.component';
+import { MysqlService } from './services/mysql.service';
+import { HttpModule } from '@angular/http';
 
 @NgModule({
   declarations: [
@@ -16,9 +18,10 @@ import { PublishTestComponent } from './publish-test/publish-test.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpModule
   ],
-  providers: [],
+  providers: [MysqlService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
