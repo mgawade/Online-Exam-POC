@@ -9,12 +9,14 @@ import { PublishTestComponent } from './publish-test/publish-test.component';
 import { MysqlService } from './services/mysql.service';
 import { HttpModule } from '@angular/http';
 import { InstructionPageComponent } from './instruction-page/instruction-page.component';
+import { QuestionsPageComponent } from './questions-page/questions-page.component';
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     PublishTestComponent,
-    InstructionPageComponent
+    InstructionPageComponent,
+    QuestionsPageComponent
   ],
   imports: [
     BrowserModule,
