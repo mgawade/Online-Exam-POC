@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, NgForm, FormControl } from '@angular/forms';
+import { FormGroup, Validators, FormControl } from '@angular/forms';
+import { StoreDataService } from '../services/store-data.service';
 
 @Component({
   selector: 'app-questions-page',
@@ -11,13 +12,31 @@ export class QuestionsPageComponent implements OnInit {
   minutes = 29;
   questionsForm: FormGroup;
   isSelected = false;
-  constructor(private readonly formBuilder: FormBuilder) { }
+  difficultyLevel;
+  questions;
+  que;
+  i = 0;
+  constructor(private readonly storedata: StoreDataService) { }
 
   ngOnInit() {
     this.questionsForm =  new FormGroup({
       option: new FormControl ('', [Validators.required]),
     });
     this.getTime();
+    this.questions = this.storedata.getQuestions();
+    this.questions.forEach(question => {
+      this.difficultyLevel = question.DifficultyLevel;
+      if (this.difficultyLevel === this.storedata.getDifficultyLevel()) {
+      this.i = this.i + 1;
+      this.questions.forEach(que => {
+        this.storedata.setSelectedQuestions(que);
+        // console.log('AAAA', que);
+      });
+      }
+    });
+    // console.log(this.storedata.getDifficultyLevel(), 'Questions Are : ', + this.i);
+    // console.log('questions', this.storedata.getSelectedQuestions());
+    console.log(this.questions);
   }
   getTime() {
   setInterval(() => {
