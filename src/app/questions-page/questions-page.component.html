@@ -83,3 +83,13 @@
     </div>
   </form>
 </div>
+
+      <div *ngFor="let question of questions; let i = index">
+        <div>
+          {{ question.Questions }}
+          <p>{{ question.OptionA }}</p>
+          <p>{{ question.OptionB }}</p>
+          <p>{{ question.OptionC }}</p>
+          <p>{{ question.OptionD }}</p>
+          <button type="button" (click)="onClick(i)">Next</button>
+        </div>

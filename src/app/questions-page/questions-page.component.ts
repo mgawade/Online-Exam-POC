@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, Validators, FormControl } from '@angular/forms';
+import { StoreDataService } from '../services/store-data.service';
 import { FormGroup, FormBuilder, Validators, NgForm, FormControl } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 
@@ -13,6 +15,11 @@ export class QuestionsPageComponent implements OnInit {
   questionsForm: FormGroup;
   descriptiveQuestionsForm: FormGroup;
   isSelected = false;
+  difficultyLevel;
+  questions;
+  que;
+  i = 0;
+  constructor(private readonly storedata: StoreDataService) { }
   isMCQ: boolean;
   selectedCategory = this.route.snapshot.paramMap.get('isMCQ');
   constructor(private readonly formBuilder: FormBuilder,
@@ -33,6 +40,20 @@ export class QuestionsPageComponent implements OnInit {
       answer: ['', [Validators.required]],
     });
     this.getTime();
+    this.questions = this.storedata.getQuestions();
+    this.questions.forEach(question => {
+      this.difficultyLevel = question.DifficultyLevel;
+      if (this.difficultyLevel === this.storedata.getDifficultyLevel()) {
+      this.i = this.i + 1;
+      this.questions.forEach(que => {
+        this.storedata.setSelectedQuestions(que);
+        // console.log('AAAA', que);
+      });
+      }
+    });
+    // console.log(this.storedata.getDifficultyLevel(), 'Questions Are : ', + this.i);
+    // console.log('questions', this.storedata.getSelectedQuestions());
+    console.log(this.questions);
   }
   getTime() {
   setInterval(() => {
