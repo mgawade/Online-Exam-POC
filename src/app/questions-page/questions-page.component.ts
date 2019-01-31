@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, NgForm, FormControl } from '@angular/forms';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-questions-page',
@@ -10,12 +11,26 @@ export class QuestionsPageComponent implements OnInit {
   seconds: any = 60;
   minutes = 29;
   questionsForm: FormGroup;
+  descriptiveQuestionsForm: FormGroup;
   isSelected = false;
-  constructor(private readonly formBuilder: FormBuilder) { }
+  isMCQ: boolean;
+  selectedCategory = this.route.snapshot.paramMap.get('isMCQ');
+  constructor(private readonly formBuilder: FormBuilder,
+    private readonly router: Router,
+    private readonly route: ActivatedRoute,
+  ) { }
 
   ngOnInit() {
-    this.questionsForm =  new FormGroup({
-      option: new FormControl ('', [Validators.required]),
+   if (this.selectedCategory === 'true') {
+      this.isMCQ = true;
+   } else {
+    this.isMCQ = false;
+   }
+    this.questionsForm = this.formBuilder.group({
+      option: ['', [Validators.required]],
+    });
+    this.descriptiveQuestionsForm = this.formBuilder.group({
+      answer: ['', [Validators.required]],
     });
     this.getTime();
   }
@@ -37,5 +52,9 @@ getSecond () {
 
 onChange() {
   const opt = this.questionsForm.get('option').value;
+  window.console.log(opt);
+}
+onNextClick() {
+  this.router.navigate(['descriptive-questions-page']);
 }
 }
