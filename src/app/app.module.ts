@@ -10,13 +10,15 @@ import { MysqlService } from './services/mysql.service';
 import { HttpModule } from '@angular/http';
 import { InstructionPageComponent } from './instruction-page/instruction-page.component';
 import { QuestionsPageComponent } from './questions-page/questions-page.component';
+import { HeaderComponent } from './header/header.component';
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     PublishTestComponent,
     InstructionPageComponent,
-    QuestionsPageComponent
+    QuestionsPageComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
