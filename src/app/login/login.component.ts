@@ -9,6 +9,7 @@ import { MysqlService } from '../services/mysql.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+  title = 'MOB QA-TEST';
   formdata;
   loginForm: FormGroup;
   constructor(private readonly formBuilder: FormBuilder,
