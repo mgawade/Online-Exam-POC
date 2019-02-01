@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { StoreDataService } from '../services/store-data.service';
-import { FormGroup, FormBuilder, Validators, NgForm, FormControl } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -19,12 +18,12 @@ export class QuestionsPageComponent implements OnInit {
   questions;
   que;
   i = 0;
-  constructor(private readonly storedata: StoreDataService) { }
   isMCQ: boolean;
   selectedCategory = this.route.snapshot.paramMap.get('isMCQ');
   constructor(private readonly formBuilder: FormBuilder,
     private readonly router: Router,
     private readonly route: ActivatedRoute,
+    private readonly storedata: StoreDataService
   ) { }
 
   ngOnInit() {
@@ -74,8 +73,5 @@ getSecond () {
 onChange() {
   const opt = this.questionsForm.get('option').value;
   window.console.log(opt);
-}
-onNextClick() {
-  this.router.navigate(['descriptive-questions-page']);
 }
 }
