@@ -40,16 +40,17 @@ export class QuestionsPageComponent implements OnInit {
     });
     this.getTime();
     this.questions = this.storedata.getQuestions();
-    this.questions.forEach(question => {
-      this.difficultyLevel = question.DifficultyLevel;
-      if (this.difficultyLevel === this.storedata.getDifficultyLevel()) {
-      this.i = this.i + 1;
-      this.questions.forEach(que => {
-        this.storedata.setSelectedQuestions(que);
-        // console.log('AAAA', que);
-      });
-      }
-    });
+    const ques = [];
+    for (const data of this.questions) {
+      if (data.DifficultyLevel === this.storedata.getDifficultyLevel()) {
+          ques.push(data);
+        }
+    }
+    this.questions = ques;
+    // this.questions = this.questions.forEach(question => {
+    //   this.difficultyLevel = question.DifficultyLevel;
+
+    // });
     // console.log(this.storedata.getDifficultyLevel(), 'Questions Are : ', + this.i);
     // console.log('questions', this.storedata.getSelectedQuestions());
     console.log(this.questions);
