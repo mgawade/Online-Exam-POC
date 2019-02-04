@@ -16,7 +16,10 @@ export class QuestionsPageComponent implements OnInit {
   isSelected = false;
   difficultyLevel;
   questions;
+  count = 0;
   que;
+  ques = [];
+  questionsNo = 1;
   i = 0;
   isMCQ: boolean;
   selectedCategory = this.route.snapshot.paramMap.get('isMCQ');
@@ -40,13 +43,15 @@ export class QuestionsPageComponent implements OnInit {
     });
     this.getTime();
     this.questions = this.storedata.getQuestions();
-    const ques = [];
     for (const data of this.questions) {
       if (data.DifficultyLevel === this.storedata.getDifficultyLevel()) {
-          ques.push(data);
+          this.ques.push(data);
+
         }
     }
-    this.questions = ques;
+        console.log('=====================', this.ques);
+        console.log('=====================', this.ques.length);
+    this.questions = this.ques;
     // this.questions = this.questions.forEach(question => {
     //   this.difficultyLevel = question.DifficultyLevel;
 
@@ -54,6 +59,7 @@ export class QuestionsPageComponent implements OnInit {
     // console.log(this.storedata.getDifficultyLevel(), 'Questions Are : ', + this.i);
     // console.log('questions', this.storedata.getSelectedQuestions());
     console.log(this.questions);
+    console.log(this.questions.lenght);
   }
   getTime() {
   setInterval(() => {
@@ -73,6 +79,14 @@ getSecond () {
 
 onChange() {
   const opt = this.questionsForm.get('option').value;
+  this.count = this.count + 1;
+  if (this.questionsNo <= this.ques.length - 1) {
+    this.questionsNo = this.questionsNo + 1;
+  } else {
+    window.console.log('ques finished');
+    this.router.navigate(['instruction-page']);
+  }
   window.console.log(opt);
+  this.questionsForm.reset();
 }
 }
