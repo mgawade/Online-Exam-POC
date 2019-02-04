@@ -1,14 +1,18 @@
 .navbar {
-  background-color: gainsboro;
-  min-height: 50px;
+  background-color: #f2f2f2;
+  min-height: 70px;
   flex-direction: row;
 }
 .img-class {
-  height: 30px;
-  width: 25%;
+  height: 58%;
+  width: 20%;
   position: absolute;
 }
 .user-class {
   position: relative;
-  margin-left: 90em;
+  margin-left: 73em ;
+}
+.user-img {
+  height: 3%;
+  width: 3%;
 }

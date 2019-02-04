@@ -1,10 +1,22 @@
 <nav class="navbar">
 
-  <!-- logo -->
+  
   <div class="navbar-brand">
     <a class="navbar-item">
-      <img class="img-class" src="https://www.jobsintech.io/system/companies/logos/000/002/003/original/Mobiquity_Logo.png">
-      <p class="user-class">admin user</p>
+      <span>
+          <img class="img-class" src="assets/Mobiquity_Logo.png">
+      </span>
+      <span class="user-class">
+        <img class="user-img" src="assets/mlog.png">
+            <button class="btn dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Admin user
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+              <button class="dropdown-item" type="button">Profile</button>
+              <button class="dropdown-item" type="button">Settings</button>
+              <button class="dropdown-item" type="button" (click)="onLogout()">Logout</button>
+            </div>
+      </span>
     </a>
   </div>
 </nav>
