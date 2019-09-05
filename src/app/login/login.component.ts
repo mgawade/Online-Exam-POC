@@ -29,7 +29,8 @@ export class LoginComponent implements OnInit {
     });
   }
   onLogin() {
-    if (this.formdata.username === this.loginForm.value.username && this.formdata.password === this.loginForm.value.password) {
+    // if (this.formdata.username === this.loginForm.value.username && this.formdata.password === this.loginForm.value.password) {
+    if (this.loginForm.value.username === 'admin' && this.loginForm.value.password === 'admin') {
       this.router.navigate(['publish-test']);
     } else {
     alert('Invalid credentials');
